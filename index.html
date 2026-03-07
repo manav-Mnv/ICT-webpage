@@ -237,32 +237,60 @@
                 </p>
             </div>
 
-            <div class="pipeline-flow">
-                <div class="pipeline-step">Upload Document (Financials, Tax, Legal)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step">OCR + Parsing (PyMuPDF / Tesseract)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step">Table Extraction (Camelot)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step border-primary">Vector Embedding (ChromaDB)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step">Financial Structuring (LLM JSON Mapping)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step">Financial Feature Eng. (Ratio Calculation)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step border-orange">Risk Model Prediction (XGBoost + SHAP)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step border-purple">NLP Risk Detection (FinBERT Text Analysis)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step border-cyan">External Intel Agents (News, Legal APIs)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step border-accent">Graph Risk Analysis (Neo4j)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step border-glow">AI Credit Reasoning (Synthesis of all signals)</div>
-                <i class="fas fa-arrow-right text-muted"></i>
-                <div class="pipeline-step bg-primary highlight-step">CAM Report Generation (LLM drafted memo)</div>
-                <i class="fas fa-arrow-down text-muted" style="display:block; margin: 1rem auto;"></i>
-                <div class="pipeline-step">Dashboard Visualization (Next.js & Recharts)</div>
+            <div class="pipeline-grid-system">
+                <!-- Row 1 -->
+                <div class="pipeline-row">
+                    <div class="pipeline-step">Upload Document (Financials, Tax, Legal)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                    <div class="pipeline-step">OCR + Parsing (PyMuPDF / Tesseract)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="pipeline-row" style="margin-left: 5%;">
+                    <div class="pipeline-step">Table Extraction (Camelot)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                    <div class="pipeline-step border-primary">Vector Embedding (ChromaDB)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="pipeline-row" style="margin-left: -5%;">
+                    <div class="pipeline-step">Financial Structuring (LLM JSON Mapping)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                    <div class="pipeline-step">Financial Feature Eng. (Ratio Calculation)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="pipeline-row" style="margin-left: 2%;">
+                    <div class="pipeline-step border-orange">Risk Model Prediction (XGBoost + SHAP)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                    <div class="pipeline-step border-purple">NLP Risk Detection (FinBERT Text Analysis)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="pipeline-row" style="margin-left: 8%;">
+                    <div class="pipeline-step border-cyan">External Intel Agents (News, Legal APIs)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                    <div class="pipeline-step border-accent">Graph Risk Analysis (Neo4j)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                </div>
+
+                <!-- Row 6 -->
+                <div class="pipeline-row" style="margin-left: -8%;">
+                    <div class="pipeline-step border-glow">AI Credit Reasoning (Synthesis of all signals)</div>
+                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                    <div class="pipeline-step bg-primary highlight-step">CAM Report Generation (LLM drafted memo)</div>
+                    <i class="fas fa-arrow-down pipeline-arrow down"></i>
+                </div>
+
+                <!-- Row 7 -->
+                <div class="pipeline-row" style="flex-direction: column;">
+                    <div class="pipeline-step" style="min-width: 400px;">Dashboard Visualization (Next.js & Recharts)
+                    </div>
+                </div>
             </div>
         </div>
     </section>
