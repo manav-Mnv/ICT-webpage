@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntelliCredit AI - Architecture & Structure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-gradient-radial"></div>
+
+    <header class="header">
+        <div class="logo">
+            <span class="text-primary">Intelli</span>Credit AI
+        </div>
+        <nav class="nav-links">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Main Page</a>
+            <a href="#structure">Folder Structure</a>
+            <a href="#visuals">Visual Architecture</a>
+        </nav>
+    </header>
+
+    <section class="section hero" style="min-height: 50vh; padding-top: 10rem;">
+        <div class="container text-center hero-content">
+            <h1 class="animate-fade-in mb-1">
+                Project <span class="text-gradient-primary">Architecture</span>
+            </h1>
+            <p class="animate-fade-in text-secondary subtitle delay-1">
+                Deep dive into the folder structure and visual system design of IntelliCredit AI.
+            </p>
+        </div>
+    </section>
+
+    <!-- Project Structure Section -->
+    <section class="section container" id="structure">
+        <div class="section-header text-center">
+            <h2>Folder <span class="text-gradient">Structure</span></h2>
+            <p class="text-secondary subtitle">
+                How the codebase is organized for scalability and maintainability.
+            </p>
+        </div>
+
+        <div class="glass-card max-w-1000 mx-auto" style="overflow-x: auto; padding: 2rem;">
+            <pre style="font-family: monospace; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
+<span class="text-primary bold">intelli-credit-ai/</span>
+├── <span class="text-accent">backend/</span>                  <span class="text-muted"># FastAPI Backend Service</span>
+│   ├── app/
+│   │   ├── main.py           <span class="text-muted"># API Entry Point</span>
+│   │   ├── api/              <span class="text-muted"># API Routes (upload, analysis, etc.)</span>
+│   │   ├── core/             <span class="text-muted"># Config, Security, DB Connections</span>
+│   │   ├── services/         <span class="text-muted"># Business Logic layer</span>
+│   │   └── tasks/            <span class="text-muted"># Celery Background Workers</span>
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── <span class="text-accent">frontend/</span>                 <span class="text-muted"># Next.js Dashboard UI</span>
+│   ├── app/                  <span class="text-muted"># Pages and Routes</span>
+│   ├── components/           <span class="text-muted"># Reusable React Components</span>
+│   ├── lib/                  <span class="text-muted"># API Clients and Utilities</span>
+│   ├── public/               <span class="text-muted"># Static Assets</span>
+│   ├── package.json
+│   └── Dockerfile
+│
+├── <span class="text-accent">ml/</span>                       <span class="text-muted"># Machine Learning Models</span>
+│   ├── models/               <span class="text-muted"># XGBoost, FinBERT weights</span>
+│   ├── pipelines/            <span class="text-muted"># Data Prep & Processing Scripts</span>
+│   ├── agents/               <span class="text-muted"># LangChain Research Agents</span>
+│   └── notebooks/            <span class="text-muted"># Jupyter Training Notebooks</span>
+│
+├── <span class="text-accent">webpage/</span>                  <span class="text-muted"># Showcase Landing Page (HTML/CSS)</span>
+│   ├── index.html            <span class="text-muted"># Main Showcase</span>
+│   ├── architecture.html     <span class="text-muted"># Structure Deep Dive</span>
+│   └── style.css             <span class="text-muted"># Global Styling</span>
+│
+├── <span class="text-accent">uploads/</span>                  <span class="text-muted"># Temporary Document Storage</span>
+├── <span class="text-white">docker-compose.yml</span>        <span class="text-muted"># Orchestrates all services</span>
+├── <span class="text-white">.env</span>                      <span class="text-muted"># Environment Variables</span>
+└── <span class="text-white">README.md</span>                 <span class="text-muted"># Project Documentation</span></pre>
+        </div>
+    </section>
+
+    <!-- Visual Architecture Section -->
+    <section class="section bg-secondary" id="visuals">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Visual <span class="text-gradient">System Flow</span></h2>
+                <p class="text-secondary subtitle">
+                    Data flow mapping from user input to final CAM report.
+                </p>
+            </div>
+
+            <div class="architecture-diagram glass-card max-w-1000 mx-auto" style="background: var(--background);">
+
+                <div class="flex-between w-100" style="gap: 2rem;">
+                    <!-- User Input -->
+                    <div style="flex: 1;">
+                        <div class="glass-card text-center bg-primary-faint border-primary">
+                            <i class="fas fa-file-pdf text-primary icon-xl mb-1"></i>
+                            <h4 class="text-white">Document Source</h4>
+                            <p class="text-secondary text-small mt-05">PDFs, CSVs, Images</p>
+                        </div>
+                    </div>
+
+                    <i class="fas fa-arrow-right text-muted icon-large"></i>
+
+                    <!-- Ingestion Layer -->
+                    <div style="flex: 2;">
+                        <div class="glass-card text-center bg-purple-faint border-purple">
+                            <h4 class="text-white mb-1"><i class="fas fa-filter text-purple"></i> Ingestion Engine</h4>
+                            <div class="badge-group center">
+                                <span class="badge border-muted">PyMuPDF</span>
+                                <span class="badge border-muted">Camelot</span>
+                                <span class="badge border-muted">Tesseract OCR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 text-center my-2" style="margin: 2rem 0;">
+                    <i class="fas fa-arrow-down text-muted icon-large"></i>
+                </div>
+
+                <div class="flex-between w-100" style="gap: 2rem;">
+                    <!-- Data Lake -->
+                    <div style="flex: 1;">
+                        <div class="glass-card text-center bg-danger-faint border-danger h-100">
+                            <i class="fas fa-database text-danger icon-xl mb-1"></i>
+                            <h4 class="text-white">Storage Layer</h4>
+                            <ul class="text-secondary text-left text-small mt-1" style="padding-left: 1.5rem;">
+                                <li>Supabase (Relational)</li>
+                                <li>ChromaDB (Vectors)</li>
+                                <li>Neo4j (Knowledge Graph)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; justify-content: space-around;">
+                        <i class="fas fa-exchange-alt text-muted icon-large"></i>
+                    </div>
+
+                    <!-- Processing Engine -->
+                    <div style="flex: 1.5;">
+                        <div class="glass-card text-center bg-accent-faint border-accent">
+                            <h4 class="text-white mb-1"><i class="fas fa-cogs text-accent"></i> Core Processors (Celery)
+                            </h4>
+                            <div class="grid grid-2" style="gap: 1rem;">
+                                <div class="glass-card p-1 text-small">XGBoost Scoring</div>
+                                <div class="glass-card p-1 text-small">FinBERT NLP</div>
+                                <div class="glass-card p-1 text-small" style="grid-column: span 2;">LangChain Web Agents
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 text-center my-2" style="margin: 2rem 0;">
+                    <i class="fas fa-arrow-down text-muted icon-large"></i>
+                </div>
+
+                <!-- Final Output -->
+                <div class="glass-card text-center primary-glow-bg border-primary w-100">
+                    <i class="fas fa-file-contract icon-xl mb-1"></i>
+                    <h3 class="text-white">Credit Appraisal Memo (CAM)</h3>
+                    <p class="mt-05 font-bold">Comprehensive risk report and lending decision generated via FastAPI</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 IntelliCredit AI. Built for the Hackathon.</p>
+    </footer>
+
+</body>
+
+</html>
