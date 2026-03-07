@@ -237,58 +237,80 @@
                 </p>
             </div>
 
-            <div class="pipeline-grid-system">
-                <!-- Row 1 -->
-                <div class="pipeline-row">
-                    <div class="pipeline-step">Upload Document (Financials, Tax, Legal)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                    <div class="pipeline-step">OCR + Parsing (PyMuPDF / Tesseract)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+            <div class="radial-pipeline">
+                <!-- Left Branches -->
+                <div class="radial-side left-side">
+                    <div class="radial-branch">
+                        <div class="radial-node blue-node">
+                            <span class="radial-num">1</span>
+                            <div class="radial-text">
+                                <span class="radial-title">Upload & Extraction</span>
+                                <span class="radial-desc">PDFs, OCR & Tables</span>
+                            </div>
+                        </div>
+                        <div class="pipe pipe-left pipe-top"></div>
+                    </div>
+                    <div class="radial-branch">
+                        <div class="radial-node teal-node">
+                            <span class="radial-num">2</span>
+                            <div class="radial-text">
+                                <span class="radial-title">Vector Embedding</span>
+                                <span class="radial-desc">ChromaDB Storage</span>
+                            </div>
+                        </div>
+                        <div class="pipe pipe-left pipe-mid"></div>
+                    </div>
+                    <div class="radial-branch">
+                        <div class="radial-node green-node">
+                            <span class="radial-num">3</span>
+                            <div class="radial-text">
+                                <span class="radial-title">Financial Structuring</span>
+                                <span class="radial-desc">LLM JSON Mapping</span>
+                            </div>
+                        </div>
+                        <div class="pipe pipe-left pipe-bot"></div>
+                    </div>
                 </div>
 
-                <!-- Row 2 -->
-                <div class="pipeline-row" style="margin-left: 5%;">
-                    <div class="pipeline-step">Table Extraction (Camelot)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                    <div class="pipeline-step border-primary">Vector Embedding (ChromaDB)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
+                <!-- Center Node -->
+                <div class="radial-center-wrapper">
+                    <div class="radial-center-circle">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Credit<br>Reasoning<br>Engine</h3>
+                    </div>
                 </div>
 
-                <!-- Row 3 -->
-                <div class="pipeline-row" style="margin-left: -5%;">
-                    <div class="pipeline-step">Financial Structuring (LLM JSON Mapping)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                    <div class="pipeline-step">Financial Feature Eng. (Ratio Calculation)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                </div>
-
-                <!-- Row 4 -->
-                <div class="pipeline-row" style="margin-left: 2%;">
-                    <div class="pipeline-step border-orange">Risk Model Prediction (XGBoost + SHAP)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                    <div class="pipeline-step border-purple">NLP Risk Detection (FinBERT Text Analysis)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                </div>
-
-                <!-- Row 5 -->
-                <div class="pipeline-row" style="margin-left: 8%;">
-                    <div class="pipeline-step border-cyan">External Intel Agents (News, Legal APIs)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                    <div class="pipeline-step border-accent">Graph Risk Analysis (Neo4j)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                </div>
-
-                <!-- Row 6 -->
-                <div class="pipeline-row" style="margin-left: -8%;">
-                    <div class="pipeline-step border-glow">AI Credit Reasoning (Synthesis of all signals)</div>
-                    <i class="fas fa-arrow-right pipeline-arrow"></i>
-                    <div class="pipeline-step bg-primary highlight-step">CAM Report Generation (LLM drafted memo)</div>
-                    <i class="fas fa-arrow-down pipeline-arrow down"></i>
-                </div>
-
-                <!-- Row 7 -->
-                <div class="pipeline-row" style="flex-direction: column;">
-                    <div class="pipeline-step" style="min-width: 400px;">Dashboard Visualization (Next.js & Recharts)
+                <!-- Right Branches -->
+                <div class="radial-side right-side">
+                    <div class="radial-branch">
+                        <div class="pipe pipe-right pipe-top"></div>
+                        <div class="radial-node red-node">
+                            <span class="radial-num">4</span>
+                            <div class="radial-text">
+                                <span class="radial-title">Risk Model Prediction</span>
+                                <span class="radial-desc">XGBoost + SHAP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radial-branch">
+                        <div class="pipe pipe-right pipe-mid"></div>
+                        <div class="radial-node orange-node">
+                            <span class="radial-num">5</span>
+                            <div class="radial-text">
+                                <span class="radial-title">Agent Intelligence</span>
+                                <span class="radial-desc">News & Legal Scrapes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radial-branch">
+                        <div class="pipe pipe-right pipe-bot"></div>
+                        <div class="radial-node yellow-node">
+                            <span class="radial-num">6</span>
+                            <div class="radial-text">
+                                <span class="radial-title">CAM Generation</span>
+                                <span class="radial-desc">Drafted by LLM</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
