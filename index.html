@@ -237,78 +237,138 @@
                 </p>
             </div>
 
-            <div class="radial-pipeline">
-                <!-- Left Branches -->
-                <div class="radial-side left-side">
-                    <div class="radial-branch">
-                        <div class="radial-node blue-node">
-                            <span class="radial-num">1</span>
-                            <div class="radial-text">
-                                <span class="radial-title">Upload & Extraction</span>
-                                <span class="radial-desc">PDFs, OCR & Tables</span>
+            <div class="spine-pipeline">
+                <!-- Left Tree: Data Ingestion & Structuring -->
+                <div class="spine-tree tree-left">
+                    <div class="spine-nodes">
+                        <div class="spine-line"></div>
+
+                        <div class="spine-node-wrapper">
+                            <div class="spine-node node-c1">
+                                <div class="spine-icon"><i class="fas fa-file-upload"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Document Ingestion</span>
+                                    <span class="spine-desc">Upload PDFs, Images, and CSVs</span>
+                                </div>
                             </div>
+                            <div class="node-connector"></div>
                         </div>
-                        <div class="pipe pipe-left pipe-top"></div>
-                    </div>
-                    <div class="radial-branch">
-                        <div class="radial-node teal-node">
-                            <span class="radial-num">2</span>
-                            <div class="radial-text">
-                                <span class="radial-title">Vector Embedding</span>
-                                <span class="radial-desc">ChromaDB Storage</span>
+
+                        <div class="spine-node-wrapper">
+                            <div class="spine-node node-c2">
+                                <div class="spine-icon"><i class="fas fa-font"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">OCR Text Engine</span>
+                                    <span class="spine-desc">PyMuPDF & Tesseract Parsing</span>
+                                </div>
                             </div>
+                            <div class="node-connector"></div>
                         </div>
-                        <div class="pipe pipe-left pipe-mid"></div>
-                    </div>
-                    <div class="radial-branch">
-                        <div class="radial-node green-node">
-                            <span class="radial-num">3</span>
-                            <div class="radial-text">
-                                <span class="radial-title">Financial Structuring</span>
-                                <span class="radial-desc">LLM JSON Mapping</span>
+
+                        <div class="spine-node-wrapper">
+                            <div class="spine-node node-c3">
+                                <div class="spine-icon"><i class="fas fa-table"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Table Extraction</span>
+                                    <span class="spine-desc">Camelot Lattice/Stream targeting</span>
+                                </div>
                             </div>
+                            <div class="node-connector"></div>
                         </div>
-                        <div class="pipe pipe-left pipe-bot"></div>
+
+                        <div class="spine-node-wrapper">
+                            <div class="spine-node node-c4">
+                                <div class="spine-icon"><i class="fas fa-vector-square"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Vector Embedding</span>
+                                    <span class="spine-desc">High-dimensional ChromaDB Store</span>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+
+                        <div class="spine-node-wrapper">
+                            <div class="spine-node node-c5">
+                                <div class="spine-icon"><i class="fas fa-code"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Financial Structuring</span>
+                                    <span class="spine-desc">LLM JSON mapping of raw data</span>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
                     </div>
+                    <div class="hub-connector"></div>
                 </div>
 
                 <!-- Center Node -->
-                <div class="radial-center-wrapper">
-                    <div class="radial-center-circle">
-                        <i class="fas fa-brain"></i>
-                        <h3>AI Credit<br>Reasoning<br>Engine</h3>
+                <div class="spine-center">
+                    <div class="spine-center-circle">
+                        <i class="fas fa-brain mb-1"></i>
+                        <h3 class="text-white">AI Credit<br>Reasoning<br>Convergence</h3>
+                        <p class="text-secondary text-small mt-05" style="line-height: 1.3">Synthesizing 500+<br>data
+                            points</p>
                     </div>
                 </div>
 
-                <!-- Right Branches -->
-                <div class="radial-side right-side">
-                    <div class="radial-branch">
-                        <div class="pipe pipe-right pipe-top"></div>
-                        <div class="radial-node red-node">
-                            <span class="radial-num">4</span>
-                            <div class="radial-text">
-                                <span class="radial-title">Risk Model Prediction</span>
-                                <span class="radial-desc">XGBoost + SHAP</span>
+                <!-- Right Tree: Intelligence & Output -->
+                <div class="spine-tree tree-right">
+                    <div class="hub-connector"></div>
+                    <div class="spine-nodes">
+                        <div class="spine-line"></div>
+
+                        <div class="spine-node-wrapper">
+                            <div class="node-connector"></div>
+                            <div class="spine-node node-c6">
+                                <div class="spine-icon"><i class="fas fa-percentage"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Financial Feature Eng.</span>
+                                    <span class="spine-desc">Calculates Debt-to-Equity & Margins</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="radial-branch">
-                        <div class="pipe pipe-right pipe-mid"></div>
-                        <div class="radial-node orange-node">
-                            <span class="radial-num">5</span>
-                            <div class="radial-text">
-                                <span class="radial-title">Agent Intelligence</span>
-                                <span class="radial-desc">News & Legal Scrapes</span>
+
+                        <div class="spine-node-wrapper">
+                            <div class="node-connector"></div>
+                            <div class="spine-node node-c7">
+                                <div class="spine-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Risk Model Prediction</span>
+                                    <span class="spine-desc">XGBoost Scoring + SHAP explains</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="radial-branch">
-                        <div class="pipe pipe-right pipe-bot"></div>
-                        <div class="radial-node yellow-node">
-                            <span class="radial-num">6</span>
-                            <div class="radial-text">
-                                <span class="radial-title">CAM Generation</span>
-                                <span class="radial-desc">Drafted by LLM</span>
+
+                        <div class="spine-node-wrapper">
+                            <div class="node-connector"></div>
+                            <div class="spine-node node-c8">
+                                <div class="spine-icon"><i class="fas fa-comment-dots"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">NLP Sentiment Analysis</span>
+                                    <span class="spine-desc">FinBERT reads director reports</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spine-node-wrapper">
+                            <div class="node-connector"></div>
+                            <div class="spine-node node-c9">
+                                <div class="spine-icon"><i class="fas fa-spider"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">Graph & Agent Intel</span>
+                                    <span class="spine-desc">Neo4j links + Web News Scrapes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spine-node-wrapper">
+                            <div class="node-connector"></div>
+                            <div class="spine-node node-c10">
+                                <div class="spine-icon"><i class="fas fa-file-contract"></i></div>
+                                <div class="spine-text">
+                                    <span class="spine-title">CAM Report Generation</span>
+                                    <span class="spine-desc">LLM drafts comprehensive memo</span>
+                                </div>
                             </div>
                         </div>
                     </div>
