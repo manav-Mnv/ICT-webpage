@@ -22,6 +22,8 @@
             <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Main Page</a>
             <a href="#structure">Folder Structure</a>
             <a href="#visuals">Visual Architecture</a>
+            <a href="#engines">Engine Deep Dives</a>
+            <a href="#infrastructure">Infrastructure</a>
         </nav>
     </header>
 
@@ -169,6 +171,230 @@
                     <p class="mt-05 font-bold">Comprehensive risk report and lending decision generated via FastAPI</p>
                 </div>
 
+                <!-- AI Reasoning Convergence Graph -->
+                <div class="glass-card text-center bg-secondary w-100 mt-2"
+                    style="border: 1px solid var(--accent); position: relative;">
+                    <h3 class="text-accent mb-1"><i class="fas fa-project-diagram"></i> AI Reasoning Convergence</h3>
+                    <div style="overflow-x: auto; padding: 1rem;">
+                        <pre
+                            style="font-family: monospace; color: var(--text-secondary); line-height: 1.5; font-size: 0.9rem; text-align: left; display: inline-block;">
+┌────────────────┐  ┌──────────────┐  ┌──────────────┐
+│ FinBERT Output │  │ Agent Traits │  │ Neo4j Links  │
+│ (- Sentiment)  │  │  (Lawsuits)  │  │(Bad Director)│
+└───────┬────────┘  └──────┬───────┘  └──────┬───────┘
+        │                  │                 │
+        └────────────────┐ │ ┌───────────────┘
+                         ▼ ▼ ▼
+                 ┌───────────────────┐
+                 │                   │◄── XGBoost Default
+                 │   LLM REASONING   │    Probability
+                 │      ENGINE       │
+                 │                   │◄── Financial Ratios
+                 └─────────┬─────────┘    (Debt-to-Equity)
+                           │
+                           ▼
+                  <span class="text-accent bold">[ FINAL DECISION ]</span></pre>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Dive: Engines -->
+    <section class="section container" id="engines">
+        <div class="section-header text-center">
+            <h2>System <span class="text-gradient-primary">Deep Dives</span></h2>
+            <p class="text-secondary subtitle">
+                Comprehensive technical specifications of IntelliCredit AI's core engines.
+            </p>
+        </div>
+
+        <div class="grid grid-2" style="gap: 2rem;">
+
+            <!-- Document Engine -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-file-pdf text-primary mr-05"></i> Document Processing Engine
+                    </h3>
+                </div>
+                <p class="text-secondary mb-1">Transforms unstructured pixels and text into structured datasets.</p>
+                <div class="divider mb-1"></div>
+                <h4 class="text-white mb-05">Tooling Arsenal</h4>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>PyMuPDF:</strong> Lightning-fast text extraction from digitally native PDFs.</li>
+                    <li><strong>Camelot:</strong> Targets lattice and stream-based tables (e.g., balance sheets).</li>
+                    <li><strong>pdfplumber:</strong> Fallback for complex visual bounding-box extractions.</li>
+                    <li><strong>Tesseract OCR:</strong> Utilized for scanned images or non-searchable PDFs.</li>
+                </ul>
+            </div>
+
+            <!-- Financial Intelligence Engine -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-chart-bar icon-orange mr-05"></i> Financial Intelligence
+                        Engine</h3>
+                </div>
+                <p class="text-secondary mb-1">Structures raw data into rigorous accounting metrics and underwriting
+                    ratios.</p>
+                <div class="divider mb-1"></div>
+                <h4 class="text-white mb-05">Metrics & Ratios</h4>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>Standardized Metrics:</strong> Revenue, Net Profit (PAT), Debt, Assets, Equity.</li>
+                    <li><strong>Debt-to-Equity:</strong> Evaluates the company's financial leverage.</li>
+                    <li><strong>Profit Margin & Interest Coverage:</strong> Measures operating efficiency and debt
+                        servicing capability.</li>
+                </ul>
+            </div>
+
+            <!-- Machine Learning Risk Engine -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-project-diagram text-danger mr-05"></i> Machine Learning
+                        Risk Engine</h3>
+                </div>
+                <p class="text-secondary mb-1">Quantitative XGBoost model trained on historical corporate default data.
+                </p>
+                <div class="divider mb-1"></div>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>The Model:</strong> XGBClassifier optimized for tabular financial data.</li>
+                    <li><strong>Feature Engineering:</strong> Uses computed financial ratios, company age, and sector
+                        risks.</li>
+                    <li><strong>Outputs:</strong> Default probability percentage and human-readable risk score.</li>
+                    <li><strong>Explainability:</strong> Employs SHAP (SHapley Additive exPlanations) for regulatory
+                        compliance.</li>
+                </ul>
+            </div>
+
+            <!-- NLP Risk Analysis -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-language icon-purple mr-05"></i> NLP Risk Analysis (FinBERT)
+                    </h3>
+                </div>
+                <p class="text-secondary mb-1">Scans unstructured text for qualitative risks that pure numbers miss.</p>
+                <div class="divider mb-1"></div>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>Sentiment Analysis:</strong> Evaluates Director's Reports and Management Discussions.
+                    </li>
+                    <li><strong>Risk Phrase Detection:</strong> Isolates sentences indicating "going concern" issues or
+                        auditor qualifications.</li>
+                    <li><strong>Integration:</strong> Highly negative textual sentiment acts as a multiplier, pulling
+                        down the overall XGBoost credit score.</li>
+                </ul>
+            </div>
+
+            <!-- Autonomous Intelligence Agents -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-user-secret icon-cyan mr-05"></i> Autonomous Intelligence
+                        Agents</h3>
+                </div>
+                <p class="text-secondary mb-1">LangChain agents reach outside provided documents to eliminate
+                    information asymmetry.</p>
+                <div class="divider mb-1"></div>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>News Agent:</strong> Scrapes financial APIs for fraud, C-suite changes, or tax
+                        investigations.</li>
+                    <li><strong>Litigation Agent:</strong> Queries legal databases to uncover ongoing lawsuits.</li>
+                    <li><strong>Industry Agent:</strong> Pulls sector-wide trends to verify projected growth realism.
+                    </li>
+                    <li><strong>Promoter Agent:</strong> Targets company directors to flag historical defaults.</li>
+                </ul>
+            </div>
+
+            <!-- Vector Knowledge Base -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-database text-primary mr-05"></i> Vector Knowledge Base</h3>
+                </div>
+                <p class="text-secondary mb-1">RAG (Retrieval-Augmented Generation) system for interacting with 100+
+                    page documents.</p>
+                <div class="divider mb-1"></div>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>Text Chunking:</strong> LangChain's RecursiveCharacterTextSplitter preserves context.
+                    </li>
+                    <li><strong>Embedding Creation:</strong> High-dimensional vectors via OpenAI/Sentence-Transformers.
+                    </li>
+                    <li><strong>ChromaDB Retrieval:</strong> Semantic nearest-neighbor retrieval surfaces exact clauses
+                        for analyst Q&A.</li>
+                </ul>
+            </div>
+
+            <!-- Graph Risk Engine -->
+            <div class="glass-card">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-network-wired text-accent mr-05"></i> Graph Risk Engine</h3>
+                </div>
+                <p class="text-secondary mb-1">Models systemic and interconnected credit risks using Neo4j.</p>
+                <div class="divider mb-1"></div>
+                <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
+                    <li><strong>Nodes & Relationships:</strong> Companies, Directors, Addresses with links like
+                        OWNS_SHARES_IN.</li>
+                    <li><strong>Hidden Risk Detection:</strong> Graph algorithms detect "shell-company matrices" and
+                        hidden promoter risks (e.g., a director involved in a separate bankrupt entity).</li>
+                </ul>
+            </div>
+
+            <!-- AI Credit Reasoning & CAM -->
+            <div class="glass-card primary-glow-bg border-primary w-100" style="grid-column: span 1 / -1;">
+                <div class="flex-between mb-1">
+                    <h3 class="text-white"><i class="fas fa-brain text-white mr-05"></i> AI Credit Reasoning & CAM
+                        Generation</h3>
+                </div>
+                <p class="text-white mb-1">The cognitive synthesis layer aligning all vectors with the traditional Five
+                    Cs of Credit.</p>
+                <div class="divider mb-1 border-primary"></div>
+                <div class="grid grid-2" style="gap: 1rem;">
+                    <div>
+                        <h4 class="text-white mb-05">The Five Cs Synthesis</h4>
+                        <ul class="text-white text-small" style="padding-left: 1.5rem; opacity: 0.9; line-height: 1.8;">
+                            <li><strong>Character:</strong> Promoter background checks & Graph history.</li>
+                            <li><strong>Capacity:</strong> XGBoost risk score & cash flows.</li>
+                            <li><strong>Capital:</strong> Debt-to-Equity & Net Worth metrics.</li>
+                            <li><strong>Collateral:</strong> Asset registry matrix parsing.</li>
+                            <li><strong>Conditions:</strong> Industry Agent's macro-economic assessment.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-05">Generated CAM Report</h4>
+                        <ul class="text-white text-small" style="padding-left: 1.5rem; opacity: 0.9; line-height: 1.8;">
+                            <li><strong>Format:</strong> Standardized Markdown/PDF report with an Executive Summary.
+                            </li>
+                            <li><strong>Transparent Justification:</strong> The LLM explicitly drafts a justification
+                                recommending Approval, Rejection, or Manual Review, directly citing the underlying data
+                                points.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Deep Dive: Infrastructure -->
+    <section class="section bg-secondary" id="infrastructure">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Docker <span class="text-gradient">Infrastructure</span></h2>
+                <p class="text-secondary subtitle">
+                    Fully containerized ecosystem ensuring massive horizontal scalability.
+                </p>
+            </div>
+
+            <div class="glass-card max-w-1000 mx-auto" style="overflow-x: auto; padding: 2rem;">
+                <pre
+                    style="font-family: monospace; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
+<span class="text-accent bold">docker-compose up --build -d</span>
+
+<span class="text-primary bold">SERVICES ACTIVATED:</span>
+├── <span class="text-white">web</span>           <span class="text-muted"># Next.js Frontend UI (Port 3000)</span>
+├── <span class="text-white">api</span>           <span class="text-muted"># FastAPI Backend Gateway (Port 8000)</span>
+├── <span class="text-white">worker</span>        <span class="text-muted"># Celery Background Processes (Heavy lifting)</span>
+├── <span class="text-white">redis</span>         <span class="text-muted"># In-memory Message Broker (Port 6379)</span>
+├── <span class="text-white">db</span>            <span class="text-muted"># Supabase/PostgreSQL Emulator (Port 5432)</span>
+├── <span class="text-white">vectordb</span>      <span class="text-muted"># ChromaDB Semantic Store (Port 8000)</span>
+└── <span class="text-white">graphdb</span>       <span class="text-muted"># Neo4j Network Graph DB (Port 7687)</span></pre>
             </div>
         </div>
     </section>
