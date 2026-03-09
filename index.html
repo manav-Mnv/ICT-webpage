@@ -12,6 +12,44 @@
         rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        .nav-tooltip { position: relative; display: inline-block; }
+        .nav-tooltip::after {
+            content: attr(data-tip);
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 15, 30, 0.95);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 0.5rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.2s ease;
+            z-index: 10000;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        /* Tooltip Arrow */
+        .nav-tooltip::before {
+            content: "";
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 6px 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent rgba(251, 191, 36, 0.4) transparent;
+            opacity: 0;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            z-index: 10000;
+        }
+        .nav-tooltip:hover::after, .nav-tooltip:hover::before { opacity: 1; }
+    </style>
 </head>
 
 <body>
@@ -29,7 +67,8 @@
             <a href="#solution">Solution</a>
             <a href="architecture.html">Structure & Architecture</a>
             <a href="#demo" class="btn btn-outline-primary btn-sm">Try Demo</a>
-            <a href="http://localhost:8000/docs" target="_blank" class="btn btn-outline-primary btn-sm">API Docs</a>
+            <span class="nav-tooltip" data-tip="Not yet public 🔒"><a href="http://localhost:8000/docs" target="_blank" class="btn btn-outline-primary btn-sm" style="pointer-events:none;opacity:0.55;">API Docs</a></span>
+            <a href="https://github.com/manav-Mnv/intelli-credit-ai-1.0.git" target="_blank" class="btn btn-outline-primary btn-sm"><i class="fab fa-github"></i> GitHub</a>
         </nav>
     </header>
 
@@ -482,7 +521,7 @@
                     <div class="api-body">
                         <div>
                             <span class="api-label">Request</span>
-                            <p class="api-code-inline">multipart/form-data (PDF, XLSX, DOCX, TXT)</p>
+                            <p class="api-code-inline">multipart/form-data</p>
                         </div>
                         <div>
                             <span class="api-label">Response</span>
@@ -664,19 +703,16 @@
                     </div>
                 </div>
 
-                <div class="demo-video-placeholder glass-card">
-                    <div class="animate-pulse-glow demo-play-btn">
-                        <button class="btn btn-primary circle-btn">
-                            <i class="fas fa-play icon-xl"></i>
-                        </button>
-                    </div>
-                    <p class="text-secondary mt-2">Click to start interactive demo</p>
+                <div class="demo-video-placeholder glass-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+                    <i class="fas fa-hourglass-half icon-xl text-accent" style="opacity:0.7;"></i>
+                    <span class="badge" style="font-size:1rem;padding:0.6rem 1.4rem;background:rgba(251,191,36,0.12);border:1px solid var(--accent);color:var(--accent);border-radius:2rem;">🚧 Demo Coming Soon</span>
+                    <p class="text-secondary" style="font-size:0.9rem;">Live walkthrough will be available at the hackathon presentation.</p>
                 </div>
             </div>
 
             <!-- MVP Scope Box -->
             <div class="glass-card mvp-box mx-auto">
-                <h3 class="text-accent text-center mb-1">✅ MVP — All Phases Complete</h3>
+                <h3 class="text-accent text-center mb-1">🛠️ MVP Scope</h3>
                 <div class="mvp-features">
                     <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Document Upload (PDF, XLSX, DOCX)</div>
                     <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Financial Data Extraction</div>
@@ -694,7 +730,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 IntelliCredit AI. Built for the Hackathon.</p>
+        <p>© 2026 IntelliCredit AI. Built for the Hackathon. | <a href="https://github.com/manav-Mnv/intelli-credit-ai-1.0.git" target="_blank" class="text-primary"><i class="fab fa-github"></i> Source Code</a></p>
     </footer>
 
 </body>

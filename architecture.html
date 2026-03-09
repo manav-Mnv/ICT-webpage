@@ -24,6 +24,7 @@
             <a href="#visuals">Visual Architecture</a>
             <a href="#engines">Engine Deep Dives</a>
             <a href="#infrastructure">Infrastructure</a>
+            <a href="https://github.com/manav-Mnv/intelli-credit-ai-1.0.git" target="_blank" class="btn btn-outline-primary btn-sm"><i class="fab fa-github"></i> GitHub</a>
         </nav>
     </header>
 
@@ -104,7 +105,7 @@
                         <div class="glass-card text-center bg-primary-faint border-primary">
                             <i class="fas fa-file-pdf text-primary icon-xl mb-1"></i>
                             <h4 class="text-white">Document Source</h4>
-                            <p class="text-secondary text-small mt-05">PDFs, CSVs, Images</p>
+                            <p class="text-secondary text-small mt-05">Financial Documents & Reports</p>
                         </div>
                     </div>
 
@@ -151,10 +152,10 @@
                             <h4 class="text-white mb-1"><i class="fas fa-cogs text-accent"></i> Core Processors (Celery)
                             </h4>
                             <div class="grid grid-2" style="gap: 1rem;">
-                                <div class="glass-card p-1 text-small">XGBoost Scoring</div>
-                                <div class="glass-card p-1 text-small">FinBERT NLP</div>
-                                <div class="glass-card p-1 text-small" style="grid-column: span 2;">LangChain Web Agents
-                                </div>
+                                <div class="glass-card p-1 text-small">XGBoost + SHAP</div>
+                                <div class="glass-card p-1 text-small">NLP Keyword Engine</div>
+                                <div class="glass-card p-1 text-small">Rule-Based Ratios</div>
+                                <div class="glass-card p-1 text-small">Research Agents</div>
                             </div>
                         </div>
                     </div>
@@ -178,22 +179,30 @@
                     <div style="overflow-x: auto; padding: 1rem;">
                         <pre
                             style="font-family: monospace; color: var(--text-secondary); line-height: 1.5; font-size: 0.9rem; text-align: left; display: inline-block;">
-┌────────────────┐  ┌──────────────┐  ┌──────────────┐
-│ FinBERT Output │  │ Agent Traits │  │ Neo4j Links  │
-│ (- Sentiment)  │  │  (Lawsuits)  │  │(Bad Director)│
-└───────┬────────┘  └──────┬───────┘  └──────┬───────┘
-        │                  │                 │
-        └────────────────┐ │ ┌───────────────┘
-                         ▼ ▼ ▼
-                 ┌───────────────────┐
-                 │                   │◄── XGBoost Default
-                 │   LLM REASONING   │    Probability
-                 │      ENGINE       │
-                 │                   │◄── Financial Ratios
-                 └─────────┬─────────┘    (Debt-to-Equity)
-                           │
-                           ▼
-                  <span class="text-accent bold">[ FINAL DECISION ]</span></pre>
+┌─────────────────┐  ┌────────────────┐  ┌──────────────────┐
+│  Rule-Based     │  │  XGBoost ML    │  │  NLP Keywords    │
+│  Ratios (45%)   │  │  Model  (25%)  │  │  Analysis (20%)  │
+└────────┬────────┘  └───────┬────────┘  └────────┬─────────┘
+         │                   │                    │
+         │     ┌─────────────┘         ┌──────────┘
+         └────►│                       │◄── Sector Risk (10%)
+               ▼                       ▼
+        ┌──────────────────────────────────┐
+        │         4-LAYER RISK ENGINE      │
+        │  final_score = rule×0.45         │
+        │    + ML×0.25 + NLP×0.20         │
+        │    + sector×0.10                 │
+        └─────────────────┬────────────────┘
+                          │
+                          ▼
+          ┌───────────────────────────┐
+          │   DECISION ENGINE + LLM   │
+          │  APPROVE / CONDITIONAL /  │
+          │       REJECT + CAM        │
+          └───────────────────────────┘
+                          │
+                          ▼
+                 <span class="text-accent bold">[ FINAL DECISION ]</span></pre>
                     </div>
                 </div>
 
@@ -238,12 +247,14 @@
                 <p class="text-secondary mb-1">Structures raw data into rigorous accounting metrics and underwriting
                     ratios.</p>
                 <div class="divider mb-1"></div>
-                <h4 class="text-white mb-05">Metrics & Ratios</h4>
+                <h4 class="text-white mb-05">Metrics & Ratios (10+ Computed)</h4>
                 <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
-                    <li><strong>Standardized Metrics:</strong> Revenue, Net Profit (PAT), Debt, Assets, Equity.</li>
-                    <li><strong>Debt-to-Equity:</strong> Evaluates the company's financial leverage.</li>
-                    <li><strong>Profit Margin & Interest Coverage:</strong> Measures operating efficiency and debt
-                        servicing capability.</li>
+                    <li><strong>Profitability:</strong> Profit Margin, Gross Margin, EBITDA Margin, ROE, ROCE.</li>
+                    <li><strong>Leverage:</strong> Debt-to-Equity (D/E), Debt-to-Assets, TOL/TNW ratio.</li>
+                    <li><strong>Liquidity:</strong> Current Ratio flagged below 1.0 (critical) and 1.2 (tight).</li>
+                    <li><strong>Debt Service:</strong> DSCR and Interest Coverage Ratio — most critical for lenders.</li>
+                    <li><strong>Growth:</strong> YoY Revenue Growth vs previous year comparison.</li>
+                    <li><strong>Health Score:</strong> Composite 0–100 score used to seed the risk engine.</li>
                 </ul>
             </div>
 
@@ -294,12 +305,10 @@
                     information asymmetry.</p>
                 <div class="divider mb-1"></div>
                 <ul class="text-secondary text-small mb-1" style="padding-left: 1.5rem; line-height: 1.8;">
-                    <li><strong>News Agent:</strong> Scrapes financial APIs for fraud, C-suite changes, or tax
-                        investigations.</li>
-                    <li><strong>Litigation Agent:</strong> Queries legal databases to uncover ongoing lawsuits.</li>
-                    <li><strong>Industry Agent:</strong> Pulls sector-wide trends to verify projected growth realism.
-                    </li>
-                    <li><strong>Promoter Agent:</strong> Targets company directors to flag historical defaults.</li>
+                    <li><strong>News Agent</strong> (<code>news_agent.py</code>): Scrapes financial news for fraud, C-suite changes, or tax investigations.</li>
+                    <li><strong>Litigation Agent</strong> (<code>litigation_agent.py</code>): Queries legal databases for NCLT, DRT, and ongoing lawsuits.</li>
+                    <li><strong>Industry Agent</strong> (<code>industry_agent.py</code>): Pulls sector-wide trends to verify projected growth realism.</li>
+                    <li><strong>Graph Agent</strong> (<code>graph_agent.py</code>): Queries Neo4j to detect shell-company links, bad directors, and entity overlap.</li>
                 </ul>
             </div>
 
@@ -401,7 +410,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 IntelliCredit AI. Built for the Hackathon.</p>
+        <p>© 2026 IntelliCredit AI. Built for the Hackathon. | <a href="https://github.com/manav-Mnv/intelli-credit-ai-1.0.git" target="_blank" class="text-primary"><i class="fab fa-github"></i> Source Code</a></p>
     </footer>
 
 </body>
