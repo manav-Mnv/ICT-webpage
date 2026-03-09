@@ -29,6 +29,7 @@
             <a href="#solution">Solution</a>
             <a href="architecture.html">Structure & Architecture</a>
             <a href="#demo" class="btn btn-outline-primary btn-sm">Try Demo</a>
+            <a href="http://localhost:8000/docs" target="_blank" class="btn btn-outline-primary btn-sm">API Docs</a>
         </nav>
     </header>
 
@@ -124,8 +125,7 @@
                     <div class="icon-box primary-glow-bg"><i class="fas fa-chart-line"></i></div>
                     <div>
                         <h3>3. Risk Models Analyze Company</h3>
-                        <p class="text-secondary">XGBoost and FinBERT calculate default probability and financial
-                            ratios.</p>
+                        <p class="text-secondary">4-layer engine: Rule-based ratios, XGBoost ML, NLP keyword signals, and sector risk weighting.</p>
                     </div>
                 </div>
 
@@ -211,9 +211,11 @@
             <div class="grid grid-2 w-100">
                 <div class="glass-card text-center arch-box border-orange border-glow">
                     <h4>XGBoost Risk Model</h4>
+                    <p class="text-muted text-small mt-05">Default probability · SHAP</p>
                 </div>
                 <div class="glass-card text-center arch-box border-purple border-glow">
-                    <h4>FinBERT NLP Engine</h4>
+                    <h4>NLP + Rule Engine</h4>
+                    <p class="text-muted text-small mt-05">Keywords · Sector Risk</p>
                 </div>
             </div>
 
@@ -322,8 +324,8 @@
                             <div class="spine-node node-c6">
                                 <div class="spine-icon"><i class="fas fa-percentage"></i></div>
                                 <div class="spine-text">
-                                    <span class="spine-title">Financial Feature Eng.</span>
-                                    <span class="spine-desc">Calculates Debt-to-Equity & Margins</span>
+                                    <span class="spine-title">Financial Ratio Engine</span>
+                                    <span class="spine-desc">D/E · DSCR · TOL/TNW · ROE · ROCE</span>
                                 </div>
                             </div>
                         </div>
@@ -420,9 +422,10 @@
                 <p class="text-secondary">AI automatically gathers external intelligence to triangulate risk profiles.
                 </p>
                 <ul class="pillar-list mt-1 text-secondary">
-                    <li><strong class="text-white">News Agent:</strong> Finds fraud news, investigations</li>
-                    <li><strong class="text-white">Litigation Agent:</strong> Checks lawsuits, tribunals</li>
-                    <li><strong class="text-white">Industry Agent:</strong> Analyzes sector growth, risks</li>
+                    <li><strong class="text-white">News Agent:</strong> Fraud news, investigations, media signals</li>
+                    <li><strong class="text-white">Litigation Agent:</strong> Lawsuits, NCLT, DRT tribunals</li>
+                    <li><strong class="text-white">Industry Agent:</strong> Sector growth trends &amp; risks</li>
+                    <li><strong class="text-white">Graph Agent:</strong> Neo4j director &amp; entity link analysis</li>
                 </ul>
             </div>
 
@@ -439,14 +442,22 @@
                     <h5 class="text-accent mb-05">Output Example &rarr;</h5>
                     <div class="flex-between mb-05">
                         <span class="text-secondary">Risk Score:</span>
-                        <strong class="text-white">72 / 100</strong>
+                        <strong class="text-white">38.5 / 100</strong>
+                    </div>
+                    <div class="flex-between mb-05">
+                        <span class="text-secondary">Risk Grade:</span>
+                        <strong class="text-white">Medium</strong>
+                    </div>
+                    <div class="flex-between mb-05">
+                        <span class="text-secondary">Default Probability:</span>
+                        <strong class="text-white">28.4%</strong>
                     </div>
                     <div class="flex-between mb-05">
                         <span class="text-secondary">Interest Rate:</span>
                         <strong class="text-white">11.5%</strong>
                     </div>
                     <div class="divider mt-05 pt-05">
-                        <strong class="text-accent">Approve loan with ₹10 Cr limit</strong>
+                        <strong class="text-accent">✅ Approve — ₹10 Cr · 60 months</strong>
                     </div>
                 </div>
             </div>
@@ -461,9 +472,7 @@
                 <p class="text-secondary subtitle">
                     Ready to integrate with existing banking core systems.
                 </p>
-            </div>
-
-            <div class="grid grid-2 max-w-1000 mx-auto">
+            </            <div class="grid grid-2 max-w-1000 mx-auto">
                 <!-- Endpoint 1 -->
                 <div class="glass-card api-card">
                     <div class="api-header">
@@ -473,13 +482,15 @@
                     <div class="api-body">
                         <div>
                             <span class="api-label">Request</span>
-                            <p class="api-code-inline">multipart/form-data</p>
+                            <p class="api-code-inline">multipart/form-data (PDF, XLSX, DOCX, TXT)</p>
                         </div>
                         <div>
                             <span class="api-label">Response</span>
                             <pre class="api-code-block"><code>{
- "document_id": "12345",
- "status": "processing"
+ "document_id": "uuid",
+ "company_id": "uuid",
+ "processing_status": "completed",
+ "financial_data_extracted": true
 }</code></pre>
                         </div>
                     </div>
@@ -488,14 +499,19 @@
                 <!-- Endpoint 2 -->
                 <div class="glass-card api-card">
                     <div class="api-header">
-                        <span class="api-method get">GET</span>
-                        <span class="api-path">/api/analysis/{id}</span>
+                        <span class="api-method post">POST</span>
+                        <span class="api-path">/api/risk/analyze</span>
                     </div>
                     <div class="api-body">
                         <div>
                             <span class="api-label">Response</span>
-                            <pre class="api-code-block"><code>Returns: revenue, profit, debt,
-financial ratios</code></pre>
+                            <pre class="api-code-block"><code>{
+ "overall_risk_score": 38.5,
+ "risk_grade": "Medium",
+ "default_probability": 0.284,
+ "risk_factors": [...],
+ "component_scores": {...}
+}</code></pre>
                         </div>
                     </div>
                 </div>
@@ -503,15 +519,19 @@ financial ratios</code></pre>
                 <!-- Endpoint 3 -->
                 <div class="glass-card api-card">
                     <div class="api-header">
-                        <span class="api-method get">GET</span>
-                        <span class="api-path">/api/risk/{company_id}</span>
+                        <span class="api-method post">POST</span>
+                        <span class="api-path">/api/cam/generate</span>
                     </div>
                     <div class="api-body">
                         <div>
                             <span class="api-label">Response</span>
                             <pre class="api-code-block"><code>{
- "risk_score": 72,
- "default_probability": 0.32
+ "decision": "APPROVE",
+ "risk_score": 38.5,
+ "recommended_loan_amount": 10000000,
+ "interest_rate": 11.5,
+ "loan_tenor_months": 60,
+ "executive_summary": "..."
 }</code></pre>
                         </div>
                     </div>
@@ -521,12 +541,14 @@ financial ratios</code></pre>
                 <div class="glass-card api-card">
                     <div class="api-header">
                         <span class="api-method get">GET</span>
-                        <span class="api-path">/api/cam/{company_id}</span>
+                        <span class="api-path">/api/cam/full/{company_id}</span>
                     </div>
                     <div class="api-body">
                         <div>
                             <span class="api-label">Response</span>
-                            <pre class="api-code-block"><code>Returns full credit appraisal memo.</code></pre>
+                            <pre class="api-code-block"><code>Returns bundled:
+ financials, risk_scores,
+ research_reports, cam_reports</code></pre>
                         </div>
                     </div>
                 </div>
@@ -548,9 +570,9 @@ financial ratios</code></pre>
                 <div class="icon-rounded"><i class="fas fa-desktop text-primary"></i></div>
                 <h3>Frontend</h3>
                 <div class="badge-group center">
-                    <span class="badge border-muted">HTML5</span>
-                    <span class="badge border-muted">CSS3</span>
-                    <span class="badge border-muted">JavaScript</span>
+                    <span class="badge border-muted">Next.js 14</span>
+                    <span class="badge border-muted">TypeScript</span>
+                    <span class="badge border-muted">Tailwind CSS</span>
                 </div>
             </div>
 
@@ -559,8 +581,8 @@ financial ratios</code></pre>
                 <h3>Backend</h3>
                 <div class="badge-group center">
                     <span class="badge border-muted">FastAPI</span>
-                    <span class="badge border-muted">Celery</span>
-                    <span class="badge border-muted">Redis</span>
+                    <span class="badge border-muted">Python 3.11</span>
+                    <span class="badge border-muted">Celery + Redis</span>
                 </div>
             </div>
 
@@ -568,8 +590,9 @@ financial ratios</code></pre>
                 <div class="icon-rounded"><i class="fas fa-microchip icon-purple"></i></div>
                 <h3>AI / ML</h3>
                 <div class="badge-group center">
-                    <span class="badge border-muted">XGBoost</span>
+                    <span class="badge border-muted">XGBoost + SHAP</span>
                     <span class="badge border-muted">FinBERT</span>
+                    <span class="badge border-muted">Gemini LLM</span>
                     <span class="badge border-muted">LangChain</span>
                 </div>
             </div>
@@ -579,8 +602,18 @@ financial ratios</code></pre>
                 <h3>Databases</h3>
                 <div class="badge-group center">
                     <span class="badge border-muted">Supabase (PostgreSQL)</span>
-                    <span class="badge border-muted">ChromaDB</span>
-                    <span class="badge border-muted">Neo4j</span>
+                    <span class="badge border-muted">ChromaDB (Vectors)</span>
+                    <span class="badge border-muted">Neo4j (Graph)</span>
+                </div>
+            </div>
+
+            <div class="glass-card tech-card">
+                <div class="icon-rounded"><i class="fas fa-file-pdf icon-orange"></i></div>
+                <h3>Document Processing</h3>
+                <div class="badge-group center">
+                    <span class="badge border-muted">PyMuPDF</span>
+                    <span class="badge border-muted">Camelot (Tables)</span>
+                    <span class="badge border-muted">Tesseract OCR</span>
                 </div>
             </div>
 
@@ -588,8 +621,8 @@ financial ratios</code></pre>
                 <div class="icon-rounded"><i class="fas fa-cube text-accent"></i></div>
                 <h3>Infrastructure</h3>
                 <div class="badge-group center">
-                    <span class="badge border-muted">Docker</span>
                     <span class="badge border-muted">Docker Compose</span>
+                    <span class="badge border-muted">uvicorn</span>
                 </div>
             </div>
         </div>
@@ -643,14 +676,16 @@ financial ratios</code></pre>
 
             <!-- MVP Scope Box -->
             <div class="glass-card mvp-box mx-auto">
-                <h3 class="text-accent text-center mb-1">MVP Scope Demonstrated</h3>
+                <h3 class="text-accent text-center mb-1">✅ MVP — All Phases Complete</h3>
                 <div class="mvp-features">
-                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Document Upload</div>
-                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Financial Extraction</div>
-                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Ratio Calculation</div>
-                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Risk Scoring</div>
-                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Research Agents</div>
-                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> CAM Generation</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Document Upload (PDF, XLSX, DOCX)</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Financial Data Extraction</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> 10+ Ratio Calculation (incl. DSCR, TOL/TNW)</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> 4-Layer Risk Engine (Rules + XGBoost + NLP + Sector)</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Vector Embedding (ChromaDB)</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Research Agents (News + Litigation + Industry + Graph)</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Decision Engine (Approve / Conditional / Reject)</div>
+                    <div class="mvp-item"><i class="fas fa-check-circle text-accent"></i> Full CAM Report Generation</div>
                 </div>
             </div>
 
